@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Grocery.belongsTo(models.User);
+      Grocery.belongsTo(models.User, {foreignKey: 'adminId'});
       // Grocery.belongsToMany(models.Order, { through: "OrderItem" });
     }
   }
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DECIMAL,
         allowNull: false,
       },
-      available_quantity: {
+      availableQuantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

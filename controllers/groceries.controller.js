@@ -1,14 +1,16 @@
+const { Op } = require('sequelize');
+
 const Models = require("../models/index.js");
 const Grocery = Models.Grocery;
 const { sequelize } = Models;
 const APP_CONSTANTS = require("../constants.js");
-const SERVICE_CONSTANTS = APP_CONSTANTS.SERVICE;
+const GROCERY_CONSTANTS = APP_CONSTANTS.GROCERY;
 
 // create a grocery
 const create = async (req, res) => {
   try {
-    const { name, price, available_quantity, adminId } = req.body;
-    await Grocery.create({ name, price, available_quantity, adminId });
+    const { name, price, availableQuantity } = req.body;
+    await Grocery.create({ name, price, availableQuantity, adminId: req?.user?.id });
     res.sendStatus(201);
   } catch (e) {
     console.warn(e);
@@ -34,12 +36,12 @@ const getById = async (req, res) => {
 const getAll = async (req, res) => {
   return Grocery.findAll({
     attributes: [
-      "name",  "price", "available_quantity",
+      "name",  "price", "availableQuantity",
       [
         sequelize.fn(
           "to_char",
           sequelize.col("createdAt"),
-          SERVICE_CONSTANTS.RES_DATE_FORMAT
+          GROCERY_CONSTANTS.RES_DATE_FORMAT
         ),
         "created_at",
       ],
@@ -51,24 +53,24 @@ const getAll = async (req, res) => {
     );
 };
 
-const getAvailableGrocery = async (req, res) => {
+const getAvailableGrocery = (req, res) => {
   return Grocery.findAll({
     attributes: [
-      "name",  "price", "available_quantity",
+      "name",  "price", "availableQuantity",
       [
         sequelize.fn(
           "to_char",
           sequelize.col("createdAt"),
-          SERVICE_CONSTANTS.RES_DATE_FORMAT
+          GROCERY_CONSTANTS.RES_DATE_FORMAT
         ),
         "created_at",
       ],
     ],
     where: {
-      available_quantity: { $gt: 0 }
+      availableQuantity: { [Op.gt]: 0 }
     }
   })
-    .then((groceries) => res.status(200).send({ groceries }))
+    .then((groceries) => res.status(200).send(groceries))
     .catch((error) =>
       res.status(500).send(APP_CONSTANTS.ERRORS.SOMETHING_WENT_WRONG)
     );
@@ -92,9 +94,10 @@ const getByName = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { id, name, price, available_quantity } = req.params;
+    const { id } = req.params;
+    const { name, price, availableQuantity } = req.body;
     await Grocery.update(
-      { name, price, available_quantity },
+      { name, price, availableQuantity },
       {
         where: { id },
       }

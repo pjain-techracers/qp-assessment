@@ -3,7 +3,7 @@ const router = express.Router();
 const dotenv = require('dotenv').config();
 
 const userRoutes = require('./user.routes.js');
-const serviceRoutes = require('./grocery.routes.js');
+const groceryRoutes = require('./grocery.routes.js');
 const orderRoutes = require('./order.routes.js');
 
 router.get('/', (req, res) => {
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/users', userRoutes);
-router.use('/groceries', serviceRoutes);
+router.use('/groceries', groceryRoutes);
 router.use('/orders', orderRoutes);
 
 module.exports = router;

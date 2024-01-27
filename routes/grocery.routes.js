@@ -15,22 +15,23 @@ const {
   validateGrocery,
 } = require("../middlewares/grocery.js");
 const { checkPermission } = require("../middlewares/rbac");
+const { authenticateToken } = require("../middlewares/auth");
 
-router.get("/", checkPermission("get_all_grocery"), getAll);
+router.get("/", authenticateToken, checkPermission("get_all_grocery"), getAll);
 router.get(
-  "/get_available_items",
+  "/get_available_items", authenticateToken, 
   checkPermission("get_avilable_grocery"),
   getAvailableGrocery
 );
 
-router.post("/", checkPermission("create_grocery"), validateGrocery, create);
+router.post("/", authenticateToken, checkPermission("create_grocery"), validateGrocery, create);
 
-router.get("/get_name", checkPermission("get_grocery_byname"), getByName);
+router.get("/get_name", authenticateToken, checkPermission("get_grocery_byname"), getByName);
 
-router.get("/:id", checkPermission("get_grocery_byid"), getById);
+router.get("/:id", authenticateToken, checkPermission("get_grocery_byid"), getById);
 
-router.patch("/:id/:name", checkPermission("update_grocery"), update);
+router.patch("/:id", authenticateToken, checkPermission("update_grocery"), update);
 
-router.delete("/:id", checkPermission("delete_grocery"), deleteById);
+router.delete("/:id", authenticateToken, checkPermission("delete_grocery"), deleteById);
 
 module.exports = router;

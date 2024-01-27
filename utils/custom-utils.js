@@ -14,7 +14,7 @@ const mandatoryFieldsCheck = (instanceToCheck, keys) => {
 };
 
 function getJWTToken(user) {
- return jwt.sign({ id: user.id }, process.env.secretKey || jwtSecretKey, {
+ return jwt.sign({ id: user.id, role: user.role }, process.env.secretKey || jwtSecretKey, {
     expiresIn: 1 * 24 * 60 * 60 * 1000,
   });
 }
