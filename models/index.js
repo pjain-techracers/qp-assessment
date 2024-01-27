@@ -41,7 +41,7 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-// sequelize.sync({ force: true });
+// sequelize.sync({ alter: true });
 // sequelize.authenticate().then(function (errors) {
 //   console.log(errors);
 // });

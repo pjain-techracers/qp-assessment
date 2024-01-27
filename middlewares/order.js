@@ -9,9 +9,9 @@ const validateReq = (req, res, next) => {
 };
 
 const validateOrder = async (req, res, next) => {
-  const { totalFee, serviceId } = req.body;
+  const { billAmount, groceries } = req.body;
 
-  if (!totalFee || !serviceId) {
+  if (!billAmount || !groceries) {
     return res
       .status(400)
       .json({ message: ORDER_CONSTANTS.ERRORS.REQUIRED_PARAM_MISSING });

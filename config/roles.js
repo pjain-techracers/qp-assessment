@@ -1,12 +1,12 @@
 const rolePermissions =  {
-  "roles": [
+  'roles': [
     {
-      "name": "admin",
-      "permissions": ["create_grocery", "get_all_grocery", "get_avilable_grocery", "update_grocery", "delete_grocery", "get_grocery_byid", "get_grocery_byname", "get_all_orders"]
+      'name': 'admin',
+      'permissions': ['create_grocery', 'get_all_grocery', 'get_avilable_grocery', 'update_grocery', 'delete_grocery', 'get_grocery_byid', 'get_grocery_byname', 'get_all_orders']
     },
     {
-      "name": "customer",
-      "permissions": ["get_all_grocery", "get_avilable_grocery", "get_grocery_byid", "get_grocery_byname", "create_order", "delete_order"]
+      'name': 'customer',
+      'permissions': ['get_all_grocery', 'get_avilable_grocery', 'get_grocery_byid', 'get_grocery_byname', 'create_order', 'delete_order', 'get_order_byid', 'get_all_orders']
     }
   ]
 }
