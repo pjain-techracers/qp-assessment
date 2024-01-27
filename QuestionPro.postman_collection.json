@@ -1,0 +1,661 @@
+{
+	"info": {
+		"_postman_id": "c82c4741-8709-4ce1-bee9-4a61e8952c4a",
+		"name": "QuestionPro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14244721"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"pjain\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/users/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "version",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"pjain\",\n    \"password\": \"test\",\n    \"name\": \"paridhi\",\n    \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/users/signup",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Groceries",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Wheat\",\n    \"price\": 40,\n    \"availableQuantity\": 100,\n    \"adminId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries/get_name?name=Wheat",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries",
+								"get_name"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Wheat"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get available items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries/get_available_items",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries",
+								"get_available_items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Wheat\",\n    \"price\": 40,\n    \"available_quantity\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/groceries/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"groceries",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"billAmount\": \"400\",\n    \"groceries\": [\n        {\n            \"groceryId\": 3,\n            \"quantity\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/orders",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get (all for admin/self for customer)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/orders",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ID(all for admin/self for customer) Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/orders/1",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{authToken}}",
+								"type": "text"
+							},
+							{
+								"key": "source",
+								"value": "web",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "eyebrow",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/api/v1/orders/2",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
